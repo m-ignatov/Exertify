@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="Workout_Scheduler.AddExercise"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Workout_Scheduler"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:num="using:WinRTXamlToolkit.Controls">
+
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition>
+                <ContinuumNavigationTransitionInfo/>
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Accept" Label="accept" Click="AppBarButton_Click"/>
+            <AppBarButton Icon="Cancel" Label="cancel" Click="AppBarButton_Click_1"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" 
+                   Text="add workout" 
+                   Margin="18,20,0,0"
+                   Style="{ThemeResource HeaderTextBlockStyle}"/>
+
+        <StackPanel Grid.Row="1" Margin="20,50,20,0">
+            <ComboBox x:Name="myComboBox"
+                      ItemsSource="{Binding}"
+                      PlaceholderText="Choose an exercise:" />
+            <TextBlock Text="Repetitions"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Margin="0,30,0,0" HorizontalAlignment="Left">
+            </TextBlock>
+            <num:NumericUpDown x:Name="repCounter"
+                               Maximum="40" 
+                               Width="200"
+                               Height="50"
+                               Minimum="5" 
+                               Value="5"
+                               FontSize="18" 
+                               FontFamily="Segoe UI"
+                               SmallChange="1" ValueFormat="0" HorizontalAlignment="Left" Margin="0,20,0,0"/>
+            <TextBlock Text="Sets"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Margin="0,30,0,0"/>
+            <num:NumericUpDown x:Name="setCounter"
+                                Maximum="10" 
+                               Width="200"
+                               Height="50"
+                               Minimum="1" 
+                               Value="1"
+                               FontSize="18" 
+                               FontFamily="Segoe UI"
+                               SmallChange="1" ValueFormat="0" HorizontalAlignment="Left" Margin="0,20,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
